@@ -618,8 +618,7 @@ class Core(CorePluginBase):
                 else:
                     if update.message.text in list(self.config["categories"].keys()):
                         # move_completed_path vs download_location
-                        self.opts["move_completed_path"] = self.config["categories"][update.message.text]
-                        self.opts["move_completed"] = True
+                        self.opts["download_location"] = self.config["categories"][update.message.text]
 
                     # If none of the existing categories were selected,
                     # maybe user is trying to save to a new directory
@@ -637,8 +636,7 @@ class Core(CorePluginBase):
                                 if not os.path.exists(otherpath):
                                     log.debug(prelog() + 'mkdir {}'.format(otherpath))
                                     os.makedirs(otherpath)
-                                self.opts["move_completed_path"] = otherpath
-                                self.opts["move_completed"] = True
+                                self.opts["download_location"] = otherpath
                         except Exception as e:
                             log.error(prelog() + str(e) + '\n' +
                                       traceback.format_exc())
