@@ -296,9 +296,9 @@ TelegramerPanel = Ext.extend(Ext.form.FormPanel, {
                 }
                 if (!Ext.isEmpty(config['categories'])) {
                     Object.entries(config['categories']).forEach(([cat, dir], index) => {
+                        if (index >= 3) return;
                         config[`cat${index+1}`] = cat;
                         config[`dir${index+1}`] = dir;
-                        if (index >= 3) return;
                     });
                     delete config['categories'];
                 }
